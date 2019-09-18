@@ -10,7 +10,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    //TODO: change these constants to match the setup
+    //TODO: Change the COM_PORT to match the setup
     const string COM_PORT = "/dev/ttyACM1";
 
     try
@@ -27,22 +27,10 @@ int main(int argc, char **argv)
         cout << "Serial: " << node.serialNumber() << endl;
         cout << "Firmware: " << node.firmwareVersion().str() << endl << endl;
 
-        //TODO: Uncomment the lines below to run the examples
-
-        //Example: Get Configuration
-        //cout << "printing the current configuration";
-        //getCurrentConfig(node);
-
-        //Example: Set Configuration
-        //setCurrentConfig(node);       //Warning: this example changes settings on your Node!
-
         //Example: Start Sampling
         cout<< "start the sampling";
         startSampling(node);
         cout<< "sampling ended";
-
-        //Example: Set to Idle
-        //setToIdle(node);
 
         //Example: Parse Data
         cout << "Parsing data starts";
