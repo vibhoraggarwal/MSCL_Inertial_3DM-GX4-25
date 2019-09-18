@@ -1,7 +1,7 @@
 # MSCL_Inertial_3DM-GX4-25
 Readingdata from the IMU using the MSCL library
 
-Before compiling and running the files in this repository, install the dependencies using the (MSCL library)[https://github.com/LORD-MicroStrain/MSCL].
+Before compiling and running the files in this repository, install the dependencies using the [MSCL library](https://github.com/LORD-MicroStrain/MSCL).
 
 Use the following command in the terminal to compile the cpp files: 
 
