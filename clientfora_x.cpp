@@ -2,7 +2,6 @@
 using namespace std;
 
 #include<mscl/mscl.h>
-
 #include"getCurrentConfig.h"
 #include"parseData.h"
 #include"setCurrentConfig.h"
@@ -23,8 +22,6 @@ void die(char const *s)
 	perror(s);
 	exit(1);
 }
-
-
 
 int main(int argc, char **argv)
 {
@@ -52,12 +49,7 @@ int main(int argc, char **argv)
 	}
 	
 	// creating the client server done
-    
-    
-    
-    
-    
-    //TODO: change these constants to match your setup
+    //TODO: Enter the port name
     const string COM_PORT = "/dev/ttyACM1";
 
     try
@@ -75,14 +67,6 @@ int main(int argc, char **argv)
         cout << "Firmware: " << node.firmwareVersion().str() << endl << endl;
 
         //TODO: Uncomment the lines below to run the examples
-
-        //Example: Get Configuration
-        //cout << "printing the current configuration";
-        //getCurrentConfig(node);
-
-        //Example: Set Configuration
-        //setCurrentConfig(node);       //Warning: this example changes settings on your Node!
-
         //Example: Start Sampling
         startSampling(node);
         
@@ -90,8 +74,6 @@ int main(int argc, char **argv)
         //setToIdle(node);
 
         //Example: Parse Data
-         
-        
         while(true)
     	{
     	clock_t time_req=clock();
@@ -102,7 +84,6 @@ int main(int argc, char **argv)
         	{
             //print out the data
             cout << "Packet Received: ";
-
             //get the data in the packet
             mscl::MipDataPoints data = packet.data();
             mscl::MipDataPoint dataPoint;
@@ -114,36 +95,27 @@ int main(int argc, char **argv)
                 cout << dataPoint.channelName() << ": ";
 				cout << dataPoint.as_float()<< endl ;
                 //print out the channel data
-                //Note: The as_string() function is being used here for simplicity. 
-                //      Other methods (ie. as_float, as_uint16, as_Vector) are also available.
+                //      Available methods as_float, as_uint16, as_Vector
                 //      To determine the format that a dataPoint is stored in, use dataPoint.storedAs().
                 
                 message_str = dataPoint.as_string() ;
                 message_float=dataPoint.as_float() ;
-                
-				//cout << dataPoint.storedAs() << " " ;
-                //if the dataPoint is invalid
-                //cout << dataPoint.valid() << " ";
-                
+               
                 // converting the string to a const char*
                 const char* message_char = (const char*)&message_float;
                 
                 cout<< "print for const char*"<<(const char*)&message_float<<endl;
-                
-                
-                //const char* message_char = message_str.c_str();
-                //cout<<message_char<<endl;
-                
+
                 // Sending the data via client on the port
                 
                 //sendto(s, message_char, strlen(message_char), 0, (struct sockaddr *) &si_other, slen);
                 sendto(s, message_char, sizeof(message_char), 0, (struct sockaddr *) &si_other, slen);
-     //           sendto(s, &message_float, sizeof(message_float), 0, (struct sockaddr *) &si_other, slen);
+     		    //sendto(s, &message_float, sizeof(message_float), 0, (struct sockaddr *) &si_other, slen);
                	if(!dataPoint.valid())
                 	{
                     cout << "[Invalid] ";
                 	}
-            	}
+            }
             cout << endl;
             time_req=clock()-time_req;
             cout<< "Time for sending data: "<< (float)time_req/CLOCKS_PER_SEC<<endl;
