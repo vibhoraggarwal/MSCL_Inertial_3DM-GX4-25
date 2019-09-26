@@ -1,5 +1,5 @@
 # MSCL_Inertial_3DM-GX4-25
-Readingdata from the IMU using the MSCL library
+Simple `c++` programs in this repository helps to read data from the [3DM-GX4-25 IMU](https://www.microstrain.com/inertial/3dm-gx4-25).
 
 Before compiling and running the files in this repository, install the dependencies using the [MSCL library](https://github.com/LORD-MicroStrain/MSCL).
 
