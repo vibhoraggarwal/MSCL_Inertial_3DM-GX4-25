@@ -11,12 +11,14 @@ using namespace std;
 int main(int argc, char **argv)
 {
     //TODO: Change the COM_PORT to match the setup
-    const string COM_PORT = "/dev/ttyACM1";
+    const string COM_PORT = "/dev/ttyACM0";
 
     try
     {
         //create a SerialConnection with the COM port
-        mscl::Connection connection = mscl::Connection::Serial(COM_PORT);
+cout<<"this line is executed"<<endl;
+        mscl::Connection connection = mscl::Connection::Serial("/dev/ttyACM1", 9600);
+cout<<"connection is set up"<<endl;
 
         //create an InertialNode with the connection
         mscl::InertialNode node(connection);
@@ -42,6 +44,6 @@ int main(int argc, char **argv)
         cout << "Error: " << e.what() << endl;
     }
 
-    system("pause");
+    //system("pause");
     return 0;
 }
