@@ -13,3 +13,6 @@ Use the following command in the terminal to compile the cpp files:
 `LD_PRELOAD=/usr/share/c++-mscl/libmscl.so ./main`
 
 These files have been simplified from the [MSCL listed examples for C++](https://github.com/LORD-MicroStrain/MSCL/tree/master/MSCL_Examples/Inertial/C%2B%2B/MSCL_Inertial_Example_C%2B%2B/MSCL_Inertial_Example_C%2B%2B).
+
+### When seen from the Data logger like putty. Following is the way data appears:
+https://www.microstrain.com/sites/default/files/8401-0087-3dm-gx5-using-an-hardware-datalogger-with-inertial-sensors.pdf
